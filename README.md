@@ -1,1 +1,1 @@
-# django-sample
+https://chigusa-web.com/blog/django-vscode-docker/
