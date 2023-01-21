@@ -140,3 +140,8 @@ MESSAGE_TAGS = {
     messages.WARNING: "alert alert-warning",
     messages.ERROR: "alert alert-danger",
 }
+
+
+SESSION_COOKIE_AGE = 60 * 15
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

@@ -28,7 +28,7 @@ def signup_view(request):
         )
         user = LoginUser.objects.get(email=email)
         user.username = username
-
+        login(request, user)
     return redirect("index")
 
 
