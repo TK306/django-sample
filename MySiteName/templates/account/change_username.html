@@ -1,0 +1,31 @@
+{% extends 'account/base.html' %}
+{% block title %}
+    - アカウント設定
+{% endblock title %}
+{% block headleft %}
+    <button class="btn btn-outline-secondary"
+            onclick="location.href='{% url "account_info" %}'">
+        <i class="bi bi-chevron-left"></i>Back
+    </button>
+{% endblock headleft %}
+{% block content %}
+    <p class="text-center h3 fw-bold mb-5">ユーザー名変更</p>
+    <form class="mx-1 mx-md-4" method="POST" action="">
+        {% csrf_token %}
+        <div class="d-flex flex-row align-items-center mb-4">
+            <i class="bi bi-lock-fill me-3" style="font-size: 1.5rem;"></i>
+            <div class="form-floating flex-fill mb-0">
+                <input type="text"
+                       id="inputUsername"
+                       class="form-control"
+                       name="username"
+                       placeholder="New user name"
+                       required>
+                <label for="inputEmail">New user name</label>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mx-4 mb-lg-4">
+            <button type="submit" class="btn btn-outline-primary btn-lg">GO</button>
+        </div>
+    </form>
+{% endblock content %}

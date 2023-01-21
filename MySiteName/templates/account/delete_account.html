@@ -1,0 +1,44 @@
+{% extends 'account/base.html' %}
+{% block title %}
+    - アカウント設定
+{% endblock title %}
+{% block headleft %}
+    <button class="btn btn-outline-secondary"
+            onclick="location.href='{% url "account_info" %}'">
+        <i class="bi bi-chevron-left"></i>Back
+    </button>
+{% endblock headleft %}
+{% block content %}
+    <p class="text-center h3 fw-bold mb-5">アカウント削除</p>
+    <form class="mx-1 mx-md-4" method="POST" action="">
+        {% csrf_token %}
+        <div class="d-flex flex-row align-items-center mb-4">
+            <i class="bi bi-person-fill me-3" style="font-size: 1.5rem;"></i>
+            <div class="form-floating flex-fill mb-0">
+                <input type="text"
+                       id="inputUsername"
+                       class="form-control"
+                       name="username"
+                       placeholder="User name"
+                       required>
+                <label for="inputUsername">User name</label>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+            <i class="bi bi-lock-fill me-3" style="font-size: 1.5rem;"></i>
+            <div class="form-outline flex-fill mb-0">
+                <input type="password"
+                       id="inputPassword"
+                       class="form-control"
+                       name="password"
+                       placeholder="Password"
+                       required>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mx-4 mb-lg-4">
+            <button class="btn btn-outline-secondary btn-lg"
+                    onclick="location.href='{% url "account_info" %}'">キャンセル</button>
+            <button type="submit" class="btn btn-danger btn-lg">アカウントを削除する</button>
+        </div>
+    </form>
+{% endblock content %}
