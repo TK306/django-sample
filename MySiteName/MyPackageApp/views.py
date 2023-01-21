@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+import MyPythonPackage as mpp
+
 # Create your views here.
 
 
 @login_required
 def index_view(request):
+    print(mpp)
     return render(request, "my-package-app/index.html")
 
 
