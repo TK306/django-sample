@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block basecontent %}
-    {% block content %}
-    {% endblock content %}
+    <main class="d-flex">
+        <div class="d-flex flex-column align-items-stretch bg-white"
+             style="width: 380px">
+            {% block sidecontent %}
+            {% endblock sidecontent %}
+        </div>
+        <div class="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </main>
 {% endblock basecontent %}

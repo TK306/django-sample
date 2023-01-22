@@ -19,7 +19,32 @@ def setting_view(request):
 
 @login_required
 def feature1_view(request):
-    return render(request, "my-package-app/feature1.html")
+    initial_context = {
+        "people": [
+            {
+                "name": "おのおのおの",
+                "org": "代1開発部第9開発科",
+                "tag": ["tag1", "tag2"],
+                "checked": "",
+            },
+            {"name": "かの", "org": "総務", "tag": ["tag1"], "checked": ""},
+            {"name": "げろげろ", "org": "雑魚", "tag": [], "checked": ""},
+        ]
+    }  # checkedの情報はいらない
+    if request.method == "POST":
+        if "tagPushed" in request.POST:
+            selectedTag = request.POST["tagPushed"]
+            context = initial_context.copy()
+            for p in context["people"]:
+                if selectedTag in p["tag"]:
+                    p["checked"] = "checked"
+                else:
+                    p["checked"] = ""
+            return render(request, "my-package-app/feature1.html", context)
+        for c in request.POST.getlist("view_check"):
+            print(c)
+
+    return render(request, "my-package-app/feature1.html", initial_context)
 
 
 @login_required

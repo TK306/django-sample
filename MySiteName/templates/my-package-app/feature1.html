@@ -1,5 +1,37 @@
 {% extends "my-package-app/base.html" %}
 {% block customcss %}
 {% endblock customcss %}
+{% block sidecontent %}
+    <!-- リストグループのサイドバー -->
+    <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <i class="bi bi-people-fill me-3" style="font-size: 1.5rem;"></i>
+        <span class="fs-5 fw-semibold">表示カスタム</span>
+    </div>
+    <form method="POST"
+          class="list-group list-group-flush border-bottom"
+          style="overflow-y: auto">
+        {% csrf_token %}
+        {% for person in people %}
+            <label class="list-group-item">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div>
+                        <input class="form-check-input mr-2" type="checkbox" {{ person.checked }} name="view_check" value="{{ person.name }}">
+                    </input>
+                    <strong class="mb-1">{{ person.name }}</strong>
+                </div>
+                <small>{{ person.org }}</small>
+            </div>
+            {% for tag in person.tag %}
+                <button type="submit" class="btn btn-outline-secondary" style="--bs-btn-padding-y: .1rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" name="tagPushed" value={{ tag }}>{{ tag }}
+                </button>
+            {% endfor %}
+        </label>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Apply</button>
+</form>
+<!-- /リストグループのサイドバー -->
+{% endblock sidecontent %}
 {% block content %}
+    bbbb
+    aaaa
 {% endblock content %}
